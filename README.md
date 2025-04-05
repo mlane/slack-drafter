@@ -1,4 +1,4 @@
-# 🧠 slack-reply-assistant
+# slack-reply-assistant
 
 A lightweight, GPT-powered Slack bot that suggests thoughtful, personalized replies whenever you're mentioned in a thread.
 
@@ -52,7 +52,7 @@ SLACK_USER_ID=U12345678  # Your Slack user ID to detect mentions
 
 ---
 
-## ✍️ Personalization
+## Personalization
 
 To customize replies to your voice:
 
@@ -62,7 +62,7 @@ To customize replies to your voice:
 
 ---
 
-## ⚙️ Slack App Setup
+## Slack App Setup
 
 1. Create a Slack App at https://api.slack.com/apps
 2. Enable **Socket Mode** and set up **Event Subscriptions**
@@ -79,7 +79,7 @@ To customize replies to your voice:
 
 ---
 
-## 🥪 Linting & Format
+## Linting & Format
 
 ```bash
 # One-time setup
@@ -92,7 +92,7 @@ ruff check .
 
 ---
 
-## 🌐 Deployment
+## Deployment
 
 You can deploy to any Python-friendly service like:
 
@@ -118,6 +118,6 @@ Or keep it running on a private always-on server.
 
 [MIT](./LICENSE)
 
-## 💬 Feedback
+## Feedback
 
 PRs welcome. Please keep things clean, consistent, and low-dependency.
