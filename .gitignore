@@ -1,0 +1,49 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pkl
+*.log
+
+# Virtual Environments
+.venv/
+env/
+venv/
+
+# dotenv environment files
+.env
+.env.*
+
+# Pytest
+.pytest_cache/
+.cache/
+
+# Mypy
+.mypy_cache/
+.dmypy.json
+
+# VS Code
+.vscode/
+
+# MacOS
+.DS_Store
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# System files
+*.swp
+*.swo
+
+# Packaging
+*.egg-info/
+dist/
+build/
+
+# Other
+*.bak
+*.tmp
+*.orig
