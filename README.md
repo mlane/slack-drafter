@@ -58,7 +58,7 @@ SLACK_USER_ID=your-slack-user-id
 
 ---
 
-## 🔪 Minimal Testing
+## Minimal Testing
 
 To keep LLM costs low, we recommend basic tests for:
 
@@ -69,14 +69,16 @@ To keep LLM costs low, we recommend basic tests for:
 Example:
 
 ```python
-# tests/utils.tests.py
+# tests/slack_utils_tests.py
 def test_format_timestamp():
-    assert format_timestamp("1714774008.000000") == "2024-05-03 02:46 PM"
+    ts = "1714774008.000000"
+    formatted = format_timestamp(ts)
+    assert formatted == "2024-05-03 10:06 PM UTC"
 ```
 
 ---
 
-## 📦 Slack App Setup
+## Slack App Setup
 
 1. Create a Slack App at https://api.slack.com/apps
 2. Enable **Slash Commands** and **Event Subscriptions**
@@ -92,7 +94,7 @@ def test_format_timestamp():
 
 ---
 
-## 🚀 Roadmap
+## Roadmap
 
 - [x] Slash command reply suggester
 - [x] Ephemeral message previews
@@ -107,7 +109,7 @@ def test_format_timestamp():
 
 [MIT](./LICENSE)
 
-## 🤝 Contributions
+## Contributions
 
 PRs welcome. Please keep things minimal, tested, and low-dependency.
 
