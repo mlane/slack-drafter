@@ -1,123 +1,120 @@
-# slack-reply-assistant
+# slack-drafter
 
-A lightweight, GPT-powered Slack bot that suggests thoughtful, personalized replies whenever you're mentioned in a thread.
+A lightweight GPT-powered **Slack bot** that helps you reply faster — without sounding like a robot.
 
-> Inspired by the [LLM Engineering Cheatsheet](https://github.com/mlane/llm-engineering-cheatsheet)
+> Powered by GPT-4 + LangChain. Designed for thoughtful humans who want to save time.
 
-- ✨ Automatically triggers when you're mentioned
-- 🧵 Understands thread context to avoid repeating what's already been said
-- 🧑‍💼 Adapts to your tone (IC vs leader)
-- 👀 Review-first: Suggestions are private until you click to send
-- ⚡ Built with FastAPI, OpenAI, and Slack Bolt
+---
 
-> Perfect for engineers, PMs, and creators who want to reply faster — without losing their voice.
+## Features
+
+- ⌨️ Use `/draft [thread URL]` in Slack to generate a reply suggestion
+- 🧵 Understands full thread context to avoid repetition
+- 🔣 Adapts to your voice (IC-focused tone by default)
+- 🔒 Replies are private until you choose to send them
+- ⚡ Built with FastAPI, Slack Bolt, and LangChain
 
 ---
 
 ## Quickstart
 
 ```bash
-git clone https://github.com/mlane/slack-reply-assistant.git
-cd slack-reply-assistant
+git clone https://github.com/mlane/slack-drafter.git
+cd slack-drafter
 
-# Setup virtual environment
+# Create and activate virtual environment
 python3 -m venv .venv
 source .venv/bin/activate
 
 # Install dependencies
 pip install -r requirements.txt
 
-# Set up environment variables
+# Copy and edit environment variables
 cp .env.sample .env
-# Then add your OpenAI + Slack credentials
+# Then add your OpenAI and Slack credentials
+```
 
-# Run locally (uses FastAPI + Slack events)
+Run the app:
+
+```bash
 python src/main.py
 ```
 
 ---
 
-## 🔑 .env Setup
+## Environment Variables
 
-Copy the `.env.sample` and fill in:
-
-```
+```env
+LANGCHAIN_API_KEY=your-langchain-api-key
+LANGSMITH_ENDPOINT="https://api.smith.langchain.com"
+LANGSMITH_PROJECT=your-project-name
+LANGCHAIN_TRACING_V2=true
 OPENAI_API_KEY=your-openai-key
-SLACK_BOT_TOKEN=xoxb-your-slack-bot-token
-SLACK_APP_TOKEN=xapp-your-slack-app-level-token
-SLACK_USER_ID=U12345678  # Your Slack user ID to detect mentions
+SLACK_APP_TOKEN=xapp-your-slack-token
+SLACK_BOT_TOKEN=xoxb-your-slack-token
+SLACK_SIGNING_SECRET=your-signing-secret
+SLACK_USER_ID=your-slack-user-id
 ```
 
-> Tip: You can find your Slack user ID by clicking on your name in Slack → More → Copy member ID
+---
+
+## 🔪 Minimal Testing
+
+To keep LLM costs low, we recommend basic tests for:
+
+- `extract_slack_ids()`
+- `format_timestamp()`
+- `format_user()`
+
+Example:
+
+```python
+# tests/utils.tests.py
+def test_format_timestamp():
+    assert format_timestamp("1714774008.000000") == "2024-05-03 02:46 PM"
+```
 
 ---
 
-## Personalization
-
-To customize replies to your voice:
-
-1. Add 3–5 example Slack replies you’ve written to `src/reply_suggester/prompt_builder.py`
-2. These will be used as few-shot examples when GPT suggests responses
-3. (Optional) Add tone logic to vary replies for ICs vs execs
-
----
-
-## Slack App Setup
+## 📦 Slack App Setup
 
 1. Create a Slack App at https://api.slack.com/apps
-2. Enable **Socket Mode** and set up **Event Subscriptions**
-3. Add these scopes:
-   - `channels:history`
-   - `chat:write`
+2. Enable **Slash Commands** and **Event Subscriptions**
+3. Add these OAuth scopes:
    - `commands`
-   - `im:history`
+   - `chat:write`
+   - `channels:history`
    - `users:read`
-4. Subscribe to:
-   - `app_mention`
-   - `message.channels`
-5. Install to your workspace and copy the tokens into `.env`
+4. Create a slash command:
+   - Command: `/draft`
+   - Request URL: `https://<your-domain>/slack/events`
+5. Install to your workspace
 
 ---
 
-## Linting & Format
+## 🚀 Roadmap
 
-```bash
-# One-time setup
-pre-commit install
-
-# Manually run format + lint
-black .
-ruff check .
-```
-
----
-
-## Deployment
-
-You can deploy to any Python-friendly service like:
-
-- [Fly.io](https://fly.io/)
-- [Render](https://render.com/)
-- [Railway](https://railway.app/)
-
-Or keep it running on a private always-on server.
-
----
-
-## Roadmap
-
-- [ ] Ephemeral message suggestions (MVP)
-- [ ] Adaptive tone (IC vs leader)
-- [ ] App Home tab fallback
-- [ ] Add memory/personal context for long-term tone
+- [x] Slash command reply suggester
+- [x] Ephemeral message previews
+- [x] Tone tuned to IC voice
+- [ ] Optional App Home fallback UI
+- [ ] Long-term personalization via memory/context
 - [ ] Message quality scoring (e.g., “Too wordy”)
 
 ---
 
-## License
+## 🧑‍💻 License
 
 [MIT](./LICENSE)
 
-## Feedback
+## 🤝 Contributions
 
-PRs welcome. Please keep things clean, consistent, and low-dependency.
+PRs welcome. Please keep things minimal, tested, and low-dependency.
+
+---
+
+## Why "slack-drafter"?
+
+The goal is simple: help you draft thoughtful replies — fast. Whether you're in back-to-back meetings or catching up on threads, this Slack bot gives you a head start without losing your voice.
+
+Previously named `slack-reply-assistant`.
