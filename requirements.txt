@@ -23,6 +23,7 @@ httpx==0.28.1
 httpx-sse==0.4.0
 identify==2.6.9
 idna==3.10
+iniconfig==2.1.0
 jiter==0.9.0
 jsonpatch==1.33
 jsonpointer==3.0.0
@@ -42,6 +43,7 @@ orjson==3.10.16
 packaging==24.2
 pathspec==0.12.1
 platformdirs==4.3.7
+pluggy==1.5.0
 pre_commit==4.2.0
 propcache==0.3.1
 pydantic==2.11.2
