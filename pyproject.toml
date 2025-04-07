@@ -1,17 +1,17 @@
+[build-system]
+build-backend = "setuptools.build_meta"
+requires = ["setuptools", "wheel"]
+
 [tool.black]
 line-length = 88
-target-version = ['py311']
-
-[tool.ruff]
-line-length = 88
-target-version = "py311"
-select = ["E", "F", "I", "UP"]
-exclude = [".venv"]
-ignore = ["E501"]
+target-version = ["py311"]
 
 [tool.isort]
 profile = "black"
 
-[build-system]
-requires = ["setuptools", "wheel"]
-build-backend = "setuptools.build_meta"
+[tool.ruff]
+exclude = [".venv"]
+ignore = ["E501"]
+line-length = 88
+select = ["E", "F", "I", "UP"]
+target-version = "py311"
