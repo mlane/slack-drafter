@@ -50,6 +50,7 @@ LANGSMITH_ENDPOINT="https://api.smith.langchain.com"
 LANGSMITH_PROJECT=your-project-name
 LANGCHAIN_TRACING_V2=true
 OPENAI_API_KEY=your-openai-key
+SLACK_ALLOWED_USERS=user-id-1,user-id-2
 SLACK_BOT_TOKEN=xoxb-your-slack-token
 SLACK_SIGNING_SECRET=your-signing-secret
 ```

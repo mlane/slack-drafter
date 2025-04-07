@@ -1,6 +1,7 @@
 from slack_sdk import WebClient
 from slack_sdk.errors import SlackApiError
 
+from src.config import SLACK_ALLOWED_USERS
 from src.reply_suggester.suggester import generate_reply
 from src.slack.slack_utils import extract_slack_ids, format_timestamp, format_user
 
@@ -49,6 +50,13 @@ def register_handlers(app):
     def handle_suggest(ack, body, client, respond):
         # https://marcuslane.slack.com/archives/CJ9Q9TQAK/p1743892840858149
         ack()
+
+        if body["user_id"] not in SLACK_ALLOWED_USERS:
+            print(f"User {body['user_id']} ran /draft on {body.get('text')}")
+            respond(
+                "Hey! This is still in private testing. You can follow along at https://github.com/mlane/slack-drafter."
+            )
+            return
 
         if "archives" not in body.get("text", ""):
             respond(
