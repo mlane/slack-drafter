@@ -50,11 +50,12 @@ LANGSMITH_ENDPOINT="https://api.smith.langchain.com"
 LANGSMITH_PROJECT=your-project-name
 LANGCHAIN_TRACING_V2=true
 OPENAI_API_KEY=your-openai-key
-SLACK_APP_TOKEN=xapp-your-slack-token
 SLACK_BOT_TOKEN=xoxb-your-slack-token
 SLACK_SIGNING_SECRET=your-signing-secret
-SLACK_USER_ID=your-slack-user-id
 ```
+
+> Note: The LangChain and LangSmith variables are optional and currently unused.
+> They're included for future support (e.g. memory, tracing, or LangSmith debugging).
 
 ---
 

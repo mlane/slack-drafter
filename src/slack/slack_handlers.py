@@ -34,8 +34,14 @@ def suggest_reply(
             text=f"✍️ *Suggested reply:*\n\n{reply}",
             thread_ts=thread_ts,
         )
-    except SlackApiError:
-        respond("❌ Failed to post suggestion.")
+    except SlackApiError as exception:
+        if exception.response["error"] == "not_in_channel":
+            respond(
+                "⚠️ The bot isn't a member of this channel. Please invite it with `/invite @slack-drafter` and try again."
+            )
+        else:
+            respond(f"❌ Could not fetch thread: {exception}")
+        return
 
 
 def register_handlers(app):
