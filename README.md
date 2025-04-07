@@ -23,7 +23,7 @@ git clone https://github.com/mlane/slack-drafter.git
 cd slack-drafter
 
 # Create and activate virtual environment
-python3 -m venv .venv
+python3.11 -m venv .venv
 source .venv/bin/activate
 
 # Install dependencies

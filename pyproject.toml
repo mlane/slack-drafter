@@ -6,6 +6,7 @@ target-version = ['py311']
 line-length = 88
 target-version = "py311"
 select = ["E", "F", "I", "UP"]
+exclude = [".venv"]
 ignore = ["E501"]
 
 [tool.isort]

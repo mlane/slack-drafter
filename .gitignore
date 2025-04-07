@@ -23,9 +23,6 @@ venv/
 .mypy_cache/
 .dmypy.json
 
-# VS Code
-.vscode/
-
 # MacOS
 .DS_Store
 
